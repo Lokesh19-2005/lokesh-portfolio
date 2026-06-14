@@ -12,17 +12,17 @@ interface Message {
 
 const RESPONSES: Record<string, string> = {
   projects:
-    "I've worked on 4 main projects:\n\n• **Armour Tint Studios** - Premium automotive studio website\n• **Aadhya Caterers** - Modern catering platform\n• **Deekshi Global Exim** - International trade platform\n• **CineVerse** - AI-powered movie recommendations\n\nEach built with cutting-edge tech and thoughtful design!",
+    "I've worked on several projects:\n\n• **Armour Tint Studios** - Automotive studio website\n• **Aadhya Caterers** - Catering service website\n• **Deekshi Global Exim** - Export business website\n• **CineVerse** - AI movie recommendation system\n• **Food Delivery App** - UI/UX design in Figma\n\nAll web projects are live on Vercel!",
   skills:
-    "My core technologies include:\n\n**Frontend:** React.js, Next.js, TypeScript, Tailwind CSS\n**Backend:** Node.js, Fastify, Python, Java\n**AI/ML:** TensorFlow, Scikit-Learn\n**Database:** PostgreSQL, MongoDB\n**Tools:** Git, GitHub, Docker",
+    "My core technologies:\n\n**Frontend:** React.js, HTML, CSS, Tailwind CSS, JavaScript\n**Backend (concepts):** Fastify, REST APIs, JWT Auth\n**AI/ML:** TensorFlow, Keras, Scikit-Learn, Pandas, NumPy\n**Database:** PostgreSQL, SQL\n**Tools:** Git, GitHub, VS Code, Postman, Figma, Vercel",
   experience:
-    "My professional journey:\n\n• **StaffArc** - Full Stack Developer (Current)\n• **InternPe** - UI/UX Design\n• **SkillCraft Technology** - Data Science\n• **Launched Global** - Machine Learning\n\nEach role deepened my expertise in different areas of tech.",
+    "My internship experience:\n\n• **SkillCraft Technology** - Data Science Intern\n• **InternPe** - UI/UX Intern\n• **Launched Global** - Machine Learning Intern\n\nCurrently pursuing B.Tech in CS (Data Science) at GITAM University.",
   resume:
-    "You can download my resume by clicking the 'Download Resume' button in the hero section, or visit the link at the top of the page. It includes my complete experience, projects, and education details.",
+    "You can download my resume by clicking the 'Download Resume' button in the hero section. It includes my skills, education, internships, and projects.",
   hello:
-    "Hey there! 👋 I'm Sai Lokesh's AI assistant. I can tell you about his projects, skills, experience, or anything else about his portfolio. What would you like to know?",
+    "Hey there! 👋 I'm Sai Lokesh's AI assistant. I can tell you about his projects, skills, experience, or anything else. What would you like to know?",
   default:
-    "Great question! I can help you learn about Sai Lokesh's:\n\n• **Projects** - Web apps, AI/ML systems\n• **Skills** - Frontend, Backend, AI/ML\n• **Experience** - Professional journey\n• **Resume** - Download link\n\nJust ask about any of these topics!",
+    "I can help you learn about Sai Lokesh's:\n\n• **Projects** - Web apps, AI/ML systems, UI/UX\n• **Skills** - Frontend, AI/ML, Tools\n• **Experience** - Internships\n• **Resume** - Download link\n\nJust ask about any of these!",
 };
 
 function getResponse(input: string): string {
