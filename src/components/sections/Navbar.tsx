@@ -38,7 +38,7 @@ export function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            SAI<span className="text-indigo-400">.</span>LOKESH
+            SAI LOKESH<span className="text-indigo-400">.</span>PEDIREDLA
           </motion.a>
 
           <div className="hidden md:flex items-center gap-1">

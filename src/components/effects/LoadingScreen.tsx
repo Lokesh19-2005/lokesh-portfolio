@@ -37,7 +37,7 @@ export function LoadingScreen() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                SAI<span className="text-indigo-400">.</span>LOKESH
+                SAI LOKESH<span className="text-indigo-400">.</span>PEDIREDLA
               </motion.p>
               <motion.p
                 className="text-xs text-white/30 tracking-widest uppercase"
