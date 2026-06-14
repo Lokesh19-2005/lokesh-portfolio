@@ -6,10 +6,6 @@
     --foreground: 0 0% 100%;
   }
 
-  * {
-    cursor: none;
-  }
-
   body {
     background: #030014;
     overflow-x: hidden;
@@ -67,15 +63,4 @@
   }
 }
 
-/* Smooth cursor for mobile */
-@media (max-width: 768px) {
-  * {
-    cursor: auto !important;
-  }
-}
-
-@media (pointer: coarse) {
-  * {
-    cursor: auto !important;
-  }
-}
+/* Mobile touch devices don't need custom cursor effects */
