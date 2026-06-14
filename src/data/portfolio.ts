@@ -15,49 +15,77 @@ export const personalInfo = {
   whatsapp: "https://wa.me/917416751547",
   linkedin: "https://www.linkedin.com/in/pediredla-sai-lokesh-577a3b30b/",
   github: "https://github.com/Lokesh19-2005",
-  location: "India",
+  location: "Visakhapatnam, India",
   resumeUrl: "/resume.pdf",
 };
 
 export const skills = {
   frontend: [
-    { name: "React.js", level: 95 },
-    { name: "Next.js", level: 90 },
-    { name: "TypeScript", level: 88 },
-    { name: "JavaScript", level: 95 },
-    { name: "Tailwind CSS", level: 92 },
-    { name: "Framer Motion", level: 85 },
+    { name: "React.js", level: 92 },
+    { name: "HTML", level: 95 },
+    { name: "CSS", level: 93 },
+    { name: "Tailwind CSS", level: 90 },
+    { name: "JavaScript", level: 92 },
   ],
   backend: [
     { name: "Fastify", level: 85 },
-    { name: "Node.js", level: 88 },
-    { name: "Python", level: 90 },
-    { name: "Java", level: 82 },
+    { name: "REST APIs", level: 88 },
+    { name: "JWT Authentication", level: 83 },
   ],
   database: [
     { name: "PostgreSQL", level: 85 },
-    { name: "MongoDB", level: 80 },
+    { name: "SQL", level: 87 },
   ],
   aiml: [
     { name: "TensorFlow", level: 82 },
+    { name: "Keras", level: 80 },
     { name: "Scikit-Learn", level: 85 },
-    { name: "Machine Learning", level: 80 },
-    { name: "Data Science", level: 85 },
+    { name: "Pandas", level: 88 },
+    { name: "NumPy", level: 87 },
   ],
   tools: [
     { name: "Git", level: 90 },
     { name: "GitHub", level: 92 },
     { name: "VS Code", level: 95 },
-    { name: "Docker", level: 75 },
+    { name: "Postman", level: 85 },
+    { name: "Figma", level: 82 },
+    { name: "Vercel", level: 88 },
+  ],
+  languages: [
+    { name: "Java", level: 85 },
+    { name: "JavaScript", level: 92 },
+    { name: "Python", level: 88 },
+    { name: "SQL", level: 87 },
   ],
 };
+
+export const education = [
+  {
+    institution: "GITAM University, Visakhapatnam",
+    degree: "B.Tech in Computer Science (Data Science)",
+    duration: "Expected 2027",
+    score: "",
+  },
+  {
+    institution: "Intermediate (MPC)",
+    degree: "",
+    duration: "",
+    score: "84.3%",
+  },
+  {
+    institution: "SSC",
+    degree: "",
+    duration: "",
+    score: "98.3%",
+  },
+];
 
 export const projects = [
   {
     id: "armour-tint-studios",
     title: "Armour Tint Studios",
     description:
-      "Premium automotive tinting and protection studio website with immersive 3D visuals and seamless booking experience.",
+      "Premium automotive tinting and protection studio website with immersive visuals and seamless booking experience.",
     tags: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
     image: "/images/project-1.jpg",
     color: "#6366f1",
@@ -93,61 +121,81 @@ export const projects = [
     id: "cineverse",
     title: "CineVerse",
     description:
-      "AI-powered movie recommendation system using collaborative filtering and content-based algorithms for personalized suggestions.",
-    tags: ["Python", "TensorFlow", "Scikit-Learn", "React"],
+      "Deep learning-based movie recommendation system using embedding layers to model user preferences with an interactive Streamlit application for real-time recommendations.",
+    tags: ["Python", "TensorFlow", "Keras", "Streamlit"],
     image: "/images/project-4.jpg",
     color: "#f59e0b",
     liveUrl: "https://github.com/Lokesh19-2005",
     githubUrl: "https://github.com/Lokesh19-2005",
     category: "AI/ML",
   },
+  {
+    id: "food-delivery-ui",
+    title: "Food Delivery App UI/UX",
+    description:
+      "Intuitive mobile application screens and interactive UI prototypes with complete user flow including login, navigation, cart, and checkout systems.",
+    tags: ["Figma", "UI/UX", "Prototyping", "Mobile Design"],
+    image: "/images/project-5.jpg",
+    color: "#10b981",
+    liveUrl: "#",
+    githubUrl: "#",
+    category: "UI/UX Design",
+  },
+  {
+    id: "react-web-app",
+    title: "React Web Application",
+    description:
+      "Responsive web application using reusable React components with dynamic form handling, client-side validation, and modular component architecture.",
+    tags: ["React.js", "JavaScript", "Responsive Design"],
+    image: "/images/project-6.jpg",
+    color: "#ec4899",
+    liveUrl: "#",
+    githubUrl: "https://github.com/Lokesh19-2005",
+    category: "Web Development",
+  },
 ];
 
 export const experience = [
   {
     id: 1,
-    company: "StaffArc",
-    role: "Full Stack Developer",
-    duration: "2024 - Present",
+    company: "SkillCraft Technology",
+    role: "Data Science Intern",
+    duration: "2024",
     description:
-      "Building scalable web applications with modern technologies. Leading frontend architecture and implementing AI-powered features.",
-    technologies: ["React", "Next.js", "Node.js", "PostgreSQL"],
-    type: "Development",
+      "Analyzed and preprocessed structured datasets using Pandas and NumPy. Trained and evaluated ML models. Performed exploratory data analysis and feature engineering to improve model performance.",
+    technologies: ["Python", "Pandas", "NumPy", "Scikit-Learn", "Matplotlib"],
+    type: "Data Science",
   },
   {
     id: 2,
     company: "InternPe",
-    role: "UI/UX Designer",
+    role: "UI/UX Intern",
     duration: "2024",
     description:
-      "Designed intuitive user interfaces and conducted user research. Created wireframes, prototypes, and high-fidelity designs.",
-    technologies: ["Figma", "Adobe XD", "Prototyping", "User Research"],
+      "Designed mobile and web UI prototypes using Figma. Improved usability through iterative design processes. Created wireframes and high-fidelity interfaces focused on intuitive user experiences.",
+    technologies: ["Figma", "Prototyping", "Wireframing", "User Research"],
     type: "Design",
   },
   {
     id: 3,
-    company: "SkillCraft Technology",
-    role: "Data Science Intern",
-    duration: "2023 - 2024",
-    description:
-      "Developed machine learning models for data analysis. Implemented data pipelines and visualization dashboards.",
-    technologies: ["Python", "Pandas", "Scikit-Learn", "Matplotlib"],
-    type: "Data Science",
-  },
-  {
-    id: 4,
     company: "Launched Global",
     role: "Machine Learning Intern",
     duration: "2023",
     description:
-      "Built and deployed ML models for predictive analytics. Worked on NLP and computer vision projects.",
-    technologies: ["TensorFlow", "PyTorch", "NLP", "Computer Vision"],
+      "Implemented supervised learning algorithms for prediction-based applications. Compared and evaluated ML models using standard evaluation metrics. Worked on preprocessing and validation workflows.",
+    technologies: ["TensorFlow", "Scikit-Learn", "Python", "ML Algorithms"],
     type: "AI/ML",
   },
 ];
 
+export const certifications = [
+  "Data Science Internship — SkillCraft Technology",
+  "UI/UX Internship — InternPe",
+  "Machine Learning Internship — Launched Global",
+];
+
 export const stats = [
-  { label: "Projects Completed", value: 15, suffix: "+" },
+  { label: "Projects Completed", value: 10, suffix: "+" },
   { label: "Technologies Mastered", value: 20, suffix: "+" },
   { label: "Lines of Code", value: 50, suffix: "K+" },
   { label: "GitHub Contributions", value: 500, suffix: "+" },
