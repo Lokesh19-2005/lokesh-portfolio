@@ -59,11 +59,11 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative py-32 overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6">
+    <section id="contact" className="relative py-20 md:py-32 overflow-hidden">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <SectionHeading title="Let's Connect" subtitle="Get in Touch" />
 
-        <div className="mt-20 grid lg:grid-cols-2 gap-16">
+        <div className="mt-12 md:mt-20 grid lg:grid-cols-2 gap-12 md:gap-16">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

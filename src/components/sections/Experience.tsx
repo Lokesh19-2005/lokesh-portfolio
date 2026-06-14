@@ -7,16 +7,16 @@ import { Briefcase } from "lucide-react";
 
 export function Experience() {
   return (
-    <section id="experience" className="relative py-32 overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="experience" className="relative py-20 md:py-32 overflow-hidden">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <SectionHeading
           title="Experience"
           subtitle="Career Journey"
         />
 
-        <div className="mt-20 relative">
+        <div className="mt-12 md:mt-20 relative">
           {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500/50 via-purple-500/50 to-transparent" />
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500/50 via-purple-500/50 to-transparent" />
 
           {experience.map((exp, i) => (
             <motion.div
@@ -31,7 +31,7 @@ export function Experience() {
             >
               {/* Timeline Dot */}
               <motion.div
-                className="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-indigo-500 bg-black z-10"
+                className="absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 md:w-4 md:h-4 rounded-full border-2 border-indigo-500 bg-black z-10"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
@@ -42,7 +42,7 @@ export function Experience() {
 
               {/* Content Card */}
               <div
-                className={`ml-16 md:ml-0 md:w-[calc(50%-2rem)] ${
+                className={`ml-14 md:ml-0 md:w-[calc(50%-2rem)] ${
                   i % 2 === 0 ? "md:pr-8" : "md:pl-8"
                 }`}
               >

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -21,9 +21,14 @@ export function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+  }, []);
 
   const handleMouse = (e: React.MouseEvent) => {
-    if (!ref.current) return;
+    if (isMobile || !ref.current) return;
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
     const x = (clientX - left - width / 2) * 0.3;
@@ -52,12 +57,13 @@ export function MagneticButton({
       onMouseLeave={handleMouseLeave}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 350, damping: 15, mass: 0.5 }}
+      className="w-full sm:w-auto"
     >
       <Component
         href={href}
         onClick={onClick}
         className={cn(
-          "relative inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-medium text-sm transition-all duration-300",
+          "relative inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 md:px-7 md:py-3.5 rounded-full font-medium text-sm transition-all duration-300",
           variants[variant],
           className
         )}

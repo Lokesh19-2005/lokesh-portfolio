@@ -50,7 +50,7 @@ function TypeWriter() {
       <motion.span
         animate={{ opacity: [1, 0] }}
         transition={{ duration: 0.8, repeat: Infinity }}
-        className="inline-block w-[3px] h-[1em] bg-indigo-400 ml-1 align-middle"
+        className="inline-block w-[2px] md:w-[3px] h-[1em] bg-indigo-400 ml-1 align-middle"
       />
     </span>
   );
@@ -103,27 +103,30 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-0"
     >
-      <ParticleField />
+      {/* Only render 3D particles on desktop for performance */}
+      <div className="hidden md:block">
+        <ParticleField />
+      </div>
       <GradientMesh />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-20 md:pt-0">
         <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mb-6"
+            className="mb-4 md:mb-6"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.05] border border-white/[0.08] text-xs text-white/60">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white/[0.05] border border-white/[0.08] text-[10px] md:text-xs text-white/60">
+              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400 animate-pulse" />
               Available for opportunities
             </span>
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.9] tracking-tight mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.1] md:leading-[0.9] tracking-tight mb-4 md:mb-6"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -131,7 +134,7 @@ export function Hero() {
             {personalInfo.headline.split(" ").map((word, i) => (
               <motion.span
                 key={i}
-                className="inline-block mr-[0.25em]"
+                className="inline-block mr-[0.2em] md:mr-[0.25em]"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 + i * 0.08 }}
@@ -142,7 +145,7 @@ export function Hero() {
           </motion.h1>
 
           <motion.div
-            className="text-xl md:text-2xl text-white/50 mb-4 h-8"
+            className="text-base sm:text-lg md:text-2xl text-white/50 mb-3 md:mb-4 h-7 md:h-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
@@ -151,7 +154,7 @@ export function Hero() {
           </motion.div>
 
           <motion.p
-            className="text-lg text-white/40 max-w-xl mb-10"
+            className="text-sm sm:text-base md:text-lg text-white/40 max-w-xl mb-8 md:mb-10 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.4 }}
@@ -161,7 +164,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap gap-4"
+            className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.6 }}
@@ -185,11 +188,11 @@ export function Hero() {
       </div>
 
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <ArrowDown className="text-white/30" size={24} />
+        <ArrowDown className="text-white/30" size={20} />
       </motion.div>
     </section>
   );

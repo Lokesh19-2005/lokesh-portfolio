@@ -22,7 +22,7 @@ function ProjectCard({
     >
       <div className="relative rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.02] backdrop-blur-sm hover:border-white/[0.15] transition-all duration-500">
         {/* Project Visual */}
-        <div className="relative h-64 overflow-hidden">
+        <div className="relative h-48 md:h-64 overflow-hidden">
           <div
             className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-500"
             style={{
@@ -102,14 +102,14 @@ function ProjectCard({
 
 export function Projects() {
   return (
-    <section id="projects" className="relative py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="projects" className="relative py-20 md:py-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <SectionHeading
           title="Featured Projects"
           subtitle="My Work"
         />
 
-        <div className="mt-20 grid md:grid-cols-2 gap-8">
+        <div className="mt-12 md:mt-20 grid md:grid-cols-2 gap-5 md:gap-8">
           {projects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}

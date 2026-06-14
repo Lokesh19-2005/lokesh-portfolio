@@ -31,7 +31,7 @@ export function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 md:py-4 flex items-center justify-between">
           <motion.a
             href="#home"
             className="text-xl font-bold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent"

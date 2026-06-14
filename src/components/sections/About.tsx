@@ -36,14 +36,14 @@ const highlights = [
 
 export function About() {
   return (
-    <section id="about" className="relative py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="about" className="relative py-20 md:py-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <SectionHeading
           title="About Me"
           subtitle="Who I Am"
         />
 
-        <div className="mt-20 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="mt-12 md:mt-20 grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -97,7 +97,7 @@ export function About() {
           </motion.div>
         </div>
 
-        <div className="mt-24 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="mt-16 md:mt-24 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {highlights.map((item, i) => (
             <motion.div
               key={item.title}

@@ -30,7 +30,7 @@ export function SectionHeading({
         </motion.p>
       )}
       <motion.h2
-        className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight"
+        className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white tracking-tight"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

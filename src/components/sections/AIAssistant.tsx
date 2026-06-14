@@ -119,7 +119,7 @@ export function AIAssistant() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[500px] rounded-2xl overflow-hidden border border-white/[0.1] bg-black/90 backdrop-blur-2xl flex flex-col shadow-2xl"
+            className="fixed bottom-24 right-4 left-4 sm:left-auto sm:right-6 z-50 sm:w-[380px] h-[70vh] sm:h-[500px] max-h-[500px] rounded-2xl overflow-hidden border border-white/[0.1] bg-black/90 backdrop-blur-2xl flex flex-col shadow-2xl"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
