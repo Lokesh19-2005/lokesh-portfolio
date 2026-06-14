@@ -7,42 +7,34 @@ interface GlassCardProps {
   children: React.ReactNode;
   className?: string;
   hover?: boolean;
-  glow?: boolean;
-  glowColor?: string;
 }
 
 export function GlassCard({
   children,
   className,
   hover = true,
-  glow = false,
-  glowColor = "rgba(99,102,241,0.15)",
 }: GlassCardProps) {
   return (
     <motion.div
       className={cn(
-        "relative rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl overflow-hidden",
+        "relative rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-white/[0.01] backdrop-blur-xl overflow-hidden group",
         hover && "transition-all duration-500",
         className
       )}
       whileHover={
         hover
           ? {
-              y: -5,
-              borderColor: "rgba(255,255,255,0.15)",
+              y: -4,
+              borderColor: "rgba(255,255,255,0.12)",
               transition: { duration: 0.3 },
             }
           : undefined
       }
     >
-      {glow && (
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{
-            background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${glowColor}, transparent 40%)`,
-          }}
-        />
-      )}
+      {/* Shine effect on hover */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent" />
+      </div>
       {children}
     </motion.div>
   );

@@ -11,8 +11,9 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { AIAssistant } from "@/components/sections/AIAssistant";
 import { CustomCursor } from "@/components/effects/CustomCursor";
-import { GridBackground } from "@/components/effects/GridBackground";
+import { PremiumBackground } from "@/components/effects/PremiumBackground";
 import { LoadingScreen } from "@/components/effects/LoadingScreen";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 export default function Home() {
@@ -28,13 +29,18 @@ export default function Home() {
     <main className="relative">
       <LoadingScreen />
       {mounted && <CustomCursor />}
-      <GridBackground />
+      <PremiumBackground />
       <Navbar />
       <Hero />
+      <SectionDivider />
       <About />
+      <SectionDivider />
       <Projects />
+      <SectionDivider />
       <Skills />
+      <SectionDivider />
       <Experience />
+      <SectionDivider />
       <Contact />
       <Footer />
       {mounted && <AIAssistant />}

@@ -5,11 +5,11 @@ import { Heart } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/[0.05] py-12">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="relative border-t border-white/[0.04] py-10 md:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <motion.p
-            className="text-sm text-white/40"
+            className="text-xs md:text-sm text-white/30"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -18,26 +18,24 @@ export function Footer() {
           </motion.p>
 
           <motion.p
-            className="flex items-center gap-1.5 text-sm text-white/40"
+            className="flex items-center gap-1.5 text-xs md:text-sm text-white/30"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            Crafted with <Heart size={14} className="text-red-400 fill-red-400" /> and modern tech
+            Built with{" "}
+            <Heart size={12} className="text-red-400 fill-red-400" /> using
+            Next.js & React
           </motion.p>
 
-          <motion.div
-            className="flex items-center gap-6"
+          <motion.p
+            className="text-xs text-white/20"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            {["Next.js", "React", "Three.js", "Framer"].map((tech) => (
-              <span key={tech} className="text-xs text-white/30">
-                {tech}
-              </span>
-            ))}
-          </motion.div>
+            Designed & Developed by Sai Lokesh
+          </motion.p>
         </div>
       </div>
     </footer>

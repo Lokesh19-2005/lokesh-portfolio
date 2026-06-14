@@ -22,9 +22,9 @@ export function Navbar() {
     <>
       <motion.nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-700",
           scrolled
-            ? "bg-black/60 backdrop-blur-2xl border-b border-white/[0.05]"
+            ? "bg-[#030014]/80 backdrop-blur-2xl border-b border-white/[0.04] shadow-lg shadow-black/20"
             : "bg-transparent"
         )}
         initial={{ y: -100 }}
