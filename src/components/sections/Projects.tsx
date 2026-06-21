@@ -17,8 +17,8 @@ function ProjectCard({
       className="group relative"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true, margin: "-20px" }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
     >
       <div className="relative rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.02] backdrop-blur-sm hover:border-white/[0.15] transition-all duration-500">
         {/* Project Visual */}
