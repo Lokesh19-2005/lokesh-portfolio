@@ -16,67 +16,25 @@ const categories = [
 
 type CategoryKey = (typeof categories)[number]["key"];
 
-// Mobile: Grid-based skill cards
-function SkillCard({
-  skill,
-  index,
-  color,
-}: {
-  skill: { name: string; level: number };
-  index: number;
-  color: string;
-}) {
-  return (
-    <motion.div
-      className="relative p-4 rounded-xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-sm group hover:border-white/[0.15] transition-all duration-300"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ delay: index * 0.05, duration: 0.4 }}
-      whileHover={{ y: -3 }}
-    >
-      <div className="flex items-center justify-between mb-3">
-        <span className="text-sm font-medium text-white">{skill.name}</span>
-        <span className="text-xs text-white/40">{skill.level}%</span>
-      </div>
-      <div className="h-1.5 rounded-full bg-white/[0.05] overflow-hidden">
-        <motion.div
-          className="h-full rounded-full"
-          style={{ backgroundColor: color }}
-          initial={{ width: 0 }}
-          animate={{ width: `${skill.level}%` }}
-          transition={{ duration: 1, delay: index * 0.1, ease: "easeOut" }}
-        />
-      </div>
-      {/* Subtle glow on hover */}
-      <div
-        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle at center, ${color}08, transparent 70%)`,
-        }}
-      />
-    </motion.div>
-  );
-}
-
-// Desktop: Orbital skill orbs
 function SkillOrb({
   skill,
   index,
   color,
   total,
+  isMobile,
 }: {
   skill: { name: string; level: number };
   index: number;
   color: string;
   total: number;
+  isMobile: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
 
   const angle = (index / total) * Math.PI * 2;
-  const radius = 100 + (index % 3) * 50;
-  const x = Math.cos(angle) * radius;
-  const y = Math.sin(angle) * radius;
+  const baseRadius = isMobile ? 70 + (index % 3) * 35 : 100 + (index % 3) * 50;
+  const x = Math.cos(angle) * baseRadius;
+  const y = Math.sin(angle) * baseRadius;
 
   return (
     <motion.div
@@ -88,38 +46,43 @@ function SkillOrb({
       transition={{ delay: index * 0.08, type: "spring", stiffness: 200 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onTouchStart={() => setHovered(true)}
+      onTouchEnd={() => setTimeout(() => setHovered(false), 2000)}
     >
       <motion.div
         className="relative -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-        animate={{ y: [0, -5, 0] }}
+        animate={{ y: [0, -4, 0] }}
         transition={{
           duration: 3 + index * 0.5,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        whileHover={{ scale: 1.3 }}
+        whileHover={{ scale: 1.2 }}
       >
         <div
-          className="w-14 h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center text-[10px] lg:text-xs font-medium text-white border backdrop-blur-sm transition-all duration-300"
+          className={cn(
+            "rounded-full flex items-center justify-center font-medium text-white border backdrop-blur-sm transition-all duration-300",
+            isMobile ? "w-12 h-12 text-[9px]" : "w-14 h-14 lg:w-16 lg:h-16 text-[10px] lg:text-xs"
+          )}
           style={{
             backgroundColor: `${color}20`,
             borderColor: hovered ? color : `${color}40`,
-            boxShadow: hovered ? `0 0 30px ${color}40` : "none",
+            boxShadow: hovered ? `0 0 25px ${color}40` : "none",
           }}
         >
-          {skill.name.split(" ")[0]}
+          {skill.name.length > 8 ? skill.name.split(" ")[0] : skill.name}
         </div>
 
         <AnimatePresence>
           {hovered && (
             <motion.div
-              className="absolute top-full left-1/2 -translate-x-1/2 mt-3 px-3 py-2 rounded-lg bg-black/90 border border-white/10 backdrop-blur-xl whitespace-nowrap z-50"
+              className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2.5 py-1.5 rounded-lg bg-black/90 border border-white/10 backdrop-blur-xl whitespace-nowrap z-50"
               initial={{ opacity: 0, y: -5, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -5, scale: 0.9 }}
             >
-              <p className="text-sm font-medium text-white">{skill.name}</p>
-              <div className="mt-1 h-1 rounded-full bg-white/10 overflow-hidden">
+              <p className="text-xs font-medium text-white">{skill.name}</p>
+              <div className="mt-1 h-1 rounded-full bg-white/10 overflow-hidden w-20">
                 <motion.div
                   className="h-full rounded-full"
                   style={{ backgroundColor: color }}
@@ -128,8 +91,8 @@ function SkillOrb({
                   transition={{ duration: 0.8 }}
                 />
               </div>
-              <p className="text-xs text-white/40 mt-1">
-                Proficiency: {skill.level}%
+              <p className="text-[10px] text-white/40 mt-0.5">
+                {skill.level}%
               </p>
             </motion.div>
           )}
@@ -142,9 +105,11 @@ function SkillOrb({
 export function Skills() {
   const [activeCategory, setActiveCategory] = useState<CategoryKey>("frontend");
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    setIsMobile(window.innerWidth < 768);
   }, []);
 
   const currentSkills = skills[activeCategory];
@@ -163,7 +128,7 @@ export function Skills() {
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
               className={cn(
-                "px-3.5 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border",
+                "px-3 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border",
                 activeCategory === cat.key
                   ? "text-white border-white/20 shadow-lg"
                   : "text-white/50 border-white/[0.05] hover:text-white/80 hover:border-white/10"
@@ -185,57 +150,34 @@ export function Skills() {
           ))}
         </div>
 
-        {/* Mobile: Grid View */}
-        <div className="mt-10 md:hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              {currentSkills.map((skill, i) => (
-                <SkillCard
-                  key={skill.name}
-                  skill={skill}
-                  index={i}
-                  color={currentColor}
-                />
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Desktop: Galaxy View */}
-        <div className="mt-16 relative h-[450px] hidden md:flex items-center justify-center">
+        {/* Skill Galaxy */}
+        <div className="mt-10 md:mt-16 relative h-[350px] md:h-[450px] flex items-center justify-center overflow-hidden">
           {/* Central Core */}
           <motion.div
-            className="absolute w-20 h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center z-10"
+            className="absolute w-16 h-16 md:w-24 md:h-24 rounded-full flex items-center justify-center z-10"
             style={{
               background: `radial-gradient(circle, ${currentColor}30, transparent)`,
-              boxShadow: `0 0 60px ${currentColor}20`,
+              boxShadow: `0 0 40px ${currentColor}15`,
             }}
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           >
             <div
-              className="w-14 h-14 lg:w-16 lg:h-16 rounded-full border flex items-center justify-center"
+              className="w-10 h-10 md:w-16 md:h-16 rounded-full border flex items-center justify-center"
               style={{ borderColor: `${currentColor}50` }}
             >
-              <span className="text-xs font-bold text-white/80">AI</span>
+              <span className="text-[10px] md:text-xs font-bold text-white/80">
+                AI
+              </span>
             </div>
           </motion.div>
 
           {/* Orbit Rings */}
-          {[100, 150, 200].map((radius, i) => (
+          {(isMobile ? [70, 105, 140] : [100, 150, 200]).map((radius, i) => (
             <motion.div
               key={radius}
               className="absolute rounded-full border border-white/[0.03]"
-              style={{
-                width: radius * 2,
-                height: radius * 2,
-              }}
+              style={{ width: radius * 2, height: radius * 2 }}
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -260,6 +202,7 @@ export function Skills() {
                     index={i}
                     color={currentColor}
                     total={currentSkills.length}
+                    isMobile={isMobile}
                   />
                 ))}
               </motion.div>
